@@ -7,25 +7,26 @@ import {
     Image,
     BackHandler
 } from 'react-native';
-import { checkmarkIcon } from "../assets/images";
+import { checkmarkIcon, errorIcon } from "../assets/images";
 
 type ModalProps = {
     title: String,
     text: String,
     closeModal?: Function,
     playAgain?: Function,
-    closeApp?: Boolean
+    closeApp?: Boolean,
+    failCount?: Number
 }
 
 const FinishModal = (props: ModalProps) => {
-    const { title, text, closeModal, playAgain, closeApp } = props;
+    const { title, text, closeModal, playAgain, closeApp, failCount } = props;
 
     return (
         <View style={styles.container}>
             <View style={styles.modalContainer}>
                 <Image
                     style={styles.icon}
-                    source={checkmarkIcon}
+                    source={failCount > 0 ?  checkmarkIcon : errorIcon }
                 />
 
                 <View style={styles.infoView}>

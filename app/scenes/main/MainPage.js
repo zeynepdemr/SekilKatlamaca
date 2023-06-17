@@ -32,6 +32,8 @@ const result = [
   { key: "ucgen_prizma_2d", value: "ucgen_prizma_3d" }
 ];
 
+let maxFailCount = 3;
+
 const MainPage = () => {
   const myLocalFlashMessage = useRef();
 
@@ -55,6 +57,7 @@ const MainPage = () => {
   const [totalCorrectCount, setTotalCorrectCount] = useState(0);
 
   const playAgain = () => {
+    maxFailCount = 3;
     resetBorders()
     unDisableShapes()
     setFirstShape(null)
@@ -228,8 +231,15 @@ const MainPage = () => {
         toggleModal()
         disableShape(shapeNumber)
       } else {
+        maxFailCount -= 1;
+
+        if(maxFailCount == 0){
+          setIsCloseApp(true)
+          toggleModal()
+        }
+
         showMessage({
-          message: "Başarısız",
+          message: `Başarısız, Son ${maxFailCount} Hakkınız Kaldı.`,
           description: "✖ Yanlış Eşleşme ✖",
           type: "danger",
           duration: 3000
@@ -361,6 +371,7 @@ const MainPage = () => {
           closeModal={toggleModal}
           playAgain={playAgain}
           closeApp={isCloseApp}
+          failCount={maxFailCount}
         />
       </Modal>
 

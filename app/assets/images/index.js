@@ -9,6 +9,7 @@ import ucgen_piramit_3d from "./ucgen_piramit/ucgen_3d.png"
 import ucgen_prizma_2d from "./ucgen_prizma/eskenar_ucgen_prizma_2d.png"
 import ucgen_prizma_3d from "./ucgen_prizma/eskenar_ucgen_prizma_3d.png"
 import checkmarkIcon from "./checkmark.jpeg"
+import errorIcon from "./error-icon.png"
 
 export {
     dikdortgen_prizmasi_2d,
@@ -21,5 +22,6 @@ export {
     ucgen_piramit_3d,
     ucgen_prizma_2d,
     ucgen_prizma_3d,
-    checkmarkIcon
+    checkmarkIcon,
+    errorIcon
 }
